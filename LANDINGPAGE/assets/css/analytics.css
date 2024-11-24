@@ -1,0 +1,174 @@
+/* General Styles */
+.container {
+    background-color: #ffffff00;
+    /*
+    border: 1px solid var(--line-clr);
+    */
+    border-radius: 1em;
+    margin-bottom: 20px;
+    padding: min(3em, 15%);
+
+    h2, p{
+        margin-top: 1em;
+    }
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.vault-details {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: auto;
+}
+
+.vault-details-col {
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    margin: auto;
+}
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chart-container-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Row Layout */
+.row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Chart Wrapper */
+.chart-wrapper {
+    flex: 1;
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.chart-wrapper-col {
+    flex: 1;
+    /* min-width: 300px;
+    max-width: 600px; */
+    color: #000;
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Canvas Styling */
+canvas {
+    width: 100%;
+    height: auto;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tabs button {
+    padding: 10px 15px;
+    font-size: 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tabs button:hover {
+    background-color: #0371e7;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+    background-color: white;
+}
+
+thead th {
+    background-color: #333;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+tbody td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .chart-wrapper {
+        max-width: 100%;
+    }
+
+    .chart-wrapper-col {
+        max-width: 100%;
+    }
+
+    .tabs {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .tabs button {
+        flex: 1;
+        font-size: 12px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    thead th, tbody td {
+        padding: 8px;
+    }
+
+.container {
+    border: none;
+    padding: 0;
+    font-size: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+}

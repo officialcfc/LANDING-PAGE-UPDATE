@@ -1,0 +1,874 @@
+:root {
+    --base-clr: #aaaaf120;
+    --line-clr: gray;
+    --hover-clr: #6E6EC8;
+    --text-clr: #e6e6ef;
+    --accent-clr: #222533;
+    --secondary-text-clr: #181818;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: Poppins, 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5rem;
+}
+
+body {
+min-height: 100vh;
+min-height: 100dvh;
+background-color: var(--base-clr);
+color: var(--text-clr);
+display: grid;
+grid-template-columns: auto 1fr;
+}
+
+/* /TOP ADMIN NAV BAR/ */
+nav {
+    position: fixed;
+    isolation: isolate;
+    width: 100%;
+    z-index: 9;
+  }
+  
+  .nav__header {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+  }
+  
+  .nav__logo a {
+    font-size: 1.75rem;
+    font-weight: 400;
+    font-family: var(--header-font);
+    color: var(--white);
+  }
+  
+  .nav_menu_btn {
+    font-size: 1.5rem;
+    color: var(--white);
+    cursor: pointer;
+  }
+  
+  .nav__links {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--primary-color);
+    transition: 0.5s;
+    z-index: -1;
+    transform: translateY(-100%);
+  }
+  
+  .nav__links.open {
+    transform: translateY(0);
+  }
+  
+  .nav__links a {
+    font-weight: 500;
+    color: var(--white);
+  }
+  
+  .nav__links a:hover {
+    color: var(--text-dark);
+  }
+  
+  .nav__btns {
+    display: none;
+  }
+  
+/* /SIDE BAR START/ */
+#sidebar {
+    background-color: #6e6ec8b6;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 250px;
+    padding: 5px 1em;
+    /*
+    background-color: var(--base-clr);*/
+    border-right: 1px solid var(--line-clr);
+font-size: 15.5px;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    transition: 300ms ease-in-out;
+    overflow: hidden;
+    text-wrap: nowrap;
+}
+
+#sidebar.close {
+    padding: 5px;
+    width: 60px;
+}
+
+#sidebar ul{
+list-style: none;
+}
+
+#sidebar > ul > li:first-child {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+    .logo {
+        font-weight: 600;
+    }
+}
+
+#sidebar ul li.active a {
+    color: var(--accent-clr);
+
+    svg {
+        fill: var(--accent-clr);
+    }
+}
+
+#sidebar a, #sidebar .dropdown-btn, #sidebar .logo {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding: .85em;
+    text-decoration: none;
+    color: var(--text-clr);
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.logo img {
+    width: 50px;
+    border-radius: 50%;
+}
+.dropdown-btn {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+#sidebar svg {
+    flex-shrink: 0;
+    fill: var(--text-clr);
+}
+
+#sidebar a span, #sidebar .dropdown-btn span {
+    flex-grow: 1;
+}
+
+#sidebar a:hover, #sidebar .dropdown-btn:hover {
+background-color: var(--hover-clr);
+}
+
+#sidebar .sub-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 300ms ease-in-out;
+
+    > div {
+        overflow: hidden;
+    }
+}
+
+#sidebar .sub-menu.show {
+    grid-template-rows: 1fr;
+}
+
+.dropdown-btn svg {
+    transition: 200ms ease;
+}
+.rotate svg:last-child {
+    rotate: 180deg;
+}
+
+#sidebar .sub-menu a {
+    padding-left: 2em;
+}
+
+#toggle-btn {
+    margin-left: auto;
+    padding: 1em;
+    border: none;
+    border-radius: .5em;
+    background: none;
+    cursor: pointer;
+
+    svg {
+        transition: rotate 150ms ease;
+    }
+}
+
+svg {
+    cursor: pointer;
+}
+
+#toggle-btn:hover {
+    background-color: var(--hover-clr);
+}
+/* /SIDE BAR ENDS/
+
+/* login/signup/eng */
+/* Container for the buttons on the right side */
+.top-right-buttons {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+/* General button styling */
+.top-right-buttons button {
+    padding: 10px 40px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #6e6ec800;
+    color: #6E6EC8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Specific styling for language button */
+
+.top-right-buttons .lang-btn {
+    background-color: transparent;
+    color: #6E6EC8;
+    border: 1px solid #6E6EC8;
+}
+
+.top-right-buttons .lang-btn:hover {
+    background-color: #6E6EC8;
+    color: white;
+}
+
+.top-right-buttons .ang-btn {
+    background-color: #6E6EC8;
+    color: #fff;
+    border: 1px solid #6E6EC8;
+}
+
+.top-right-buttons .ang-btn:hover {
+    background-color: #5959be;
+    color: white;
+}
+
+/* Hover effect for login and signup buttons */
+.top-right-buttons .auth-btn:hover {
+    background-color: #5A5AB0;
+}
+
+
+
+
+
+
+.top-right-buttons-bills {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    position: absolute;
+    top: 14%;
+    right: 70px;
+}
+
+/* General button styling */
+.top-right-buttons-bills .butt-col {
+    padding: 10px 40px;
+    font-size: 11px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(237, 235, 235);
+    color: #6E6EC8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Specific styling for language button */
+
+.top-right-buttons-bills .lang-btn-bills {
+    background-color: transparent;
+    color: #6E6EC8;
+    border: 1px solid #6E6EC8;
+}
+
+
+.top-right-buttons-bills .ang-btn-bills {
+    background-color: #6E6EC8;
+    color: #fff;
+    border: 1px solid #6E6EC8;
+}
+
+.top-right-buttons-bills .ang-btn-bills:hover {
+    background-color: #5959be;
+    color: white;
+}
+
+/* Hover effect for login and signup buttons */
+.top-right-buttons-bills .auth-btn-bills:hover {
+    background-color: #5A5AB0;
+}
+
+.top-right-buttons-bills span {
+    color: #000;
+    margin-right: 600px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.card {
+    background-color: #6e6ec893;
+    width: 20%;
+    height: 15vh;
+    border-radius: 10px;
+}
+
+.card:hover {
+    border: 3px solid #5A5AB0;
+    width: 20%;
+    height: 15vh;
+    border-radius: 10px;
+}
+
+.card p {
+    color: black;
+    font-size: 15px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.card h2 {
+    color: #fff;
+    font-size: 20px;
+    padding-left: 20px;
+}
+/*MEDIA QUERY START/ */
+@media(max-width: 800px) {
+    .watermark {
+        opacity: 0.2;
+        color: BLACK;
+        position: fixed;
+        top: 1720px;
+        left: 40%;
+    }
+    
+    .watermark {
+        opacity: 0.2;
+        color: BLACK;
+        position: absolute;
+        bottom: 0;
+        right: 50%;
+    }
+    
+    .balance-overview {
+        flex-direction: column;
+    }
+
+    .top-right-header, .tabs, .header-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-buttons button,
+    .login-btn,
+    .signup-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    table thead th {
+        background-color: rgba(192, 191, 191, 0.598);
+        padding: 10px;
+        text-align: left;
+        color: #000;
+    }
+
+    table tbody tr:nth-child(even) {
+        background-color: #6e6ec857;
+        color: #000;
+    }
+    
+    table tbody tr:nth-child(odd) {
+        background-color: #e6e6f0;
+    }
+    body {
+        grid-template-columns: 1fr;
+    }
+    main {
+        padding: 2em 1em 60px 1em;
+    }
+    .SPN {
+        margin-left: 10px;
+        font-size: 15px;
+        font-weight: 650;
+    }
+    .container {
+        border: none;
+        padding: 0;
+        font-size: 10px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+
+    #sidebar {
+        height: 60px;
+        width: 100%;
+        border-right: none;
+        border-top: 1px solid var(--line-clr);
+        padding: 0;
+        position: fixed;
+        top: unset;
+        bottom: 0;
+
+        > ul {
+            padding: 0;
+            display: grid;
+            grid-auto-columns: 60px;
+            grid-auto-flow: column;
+            align-items: center;
+            overflow-x: scroll;                                 
+        }
+        
+        ul li {
+            height: 100%;
+        }
+
+        ul a, ul .dropdown-btn {
+            width: 60px;
+            height: 60px;
+            padding: 0;
+            border-radius: 0;
+            justify-content: center;
+        }
+
+        ul li span, ul li:first-child, .dropdown-btn svg:last-child {
+            display: none;
+        }
+
+        ul li .sub-menu.show {
+            position: fixed;
+            bottom: 60px;
+            left: 0;
+            box-sizing: border-box;
+            height: 60px;
+            width: 100%;
+            background-color: var(--hover-clr);
+            border-top: 1px solid var(--line-clr);
+            display: flex;
+            justify-content: center;
+
+            > div {
+                overflow-x: auto;
+            }
+            li {
+                display: inline-flex;
+            }
+
+            a {
+                box-sizing: border-box;
+                padding: 1em;
+                width: auto;
+                justify-content: center;
+            }
+        }
+
+    }
+
+    .top-right-buttons button {
+        padding: 8px 30px;
+        font-size: 13px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        background-color: #6e6ec800;
+        color: #6E6EC8;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .top-right-buttons-bills span {
+        color: #000;
+        margin-right: 50px;
+        font-weight: 600;
+        font-size: 20px;
+        padding-left: 10px;
+    }
+
+    .card p {
+        color: black;
+        font-size: 15px;
+        padding-left: 20px;
+        padding-top: 10px;
+    }
+    
+    .card h2 {
+        color: #fff;
+        font-size: 20px;
+        padding-left: 20px;
+    }
+}
+
+.top-right-buttons-bills {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    position: absolute;
+    top: 14%;
+    right: 50px;
+}
+
+/* General button styling */
+.top-right-buttons-bills button {
+    padding: 10px 35px;
+    font-size: 11px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #6e6ec800;
+    color: #6E6EC8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* /MEDIA QUERY ENDS/
+
+    /* /TRANSFER AND WITHDRAW START/ */
+    .row {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .row-fu {
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+    .second p {
+        text-align: center;
+
+    }
+/* /TRANSFER AND WITHDRAW ENDS/
+
+/MESSAGE SLIDER START/ */
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.slideshow-container img {
+width: 100%;
+height: 20vh;
+}
+
+/*
+.active {
+  background-color: #8d1313;
+}
+*/
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+
+
+
+
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #6e6ec80f;
+}
+
+/* Top-right header section */
+.top-right-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.language .icon {
+    width: 16px;
+    vertical-align: middle;
+}
+
+.login-btn, .signup-btn {
+    background-color: #6e6ec800;
+    color: #6e6ec8;
+    border: 1px solid #6e6ec8;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 150px;
+    height: 35px;
+}
+
+.login-btn:hover {
+    background-color: #6e6ec8;
+    color: #fff;
+}
+
+.signup-btn {
+    background-color: #6e6ec8;
+    color: #fff;
+}
+
+/* Title and Header Buttons */
+h1 {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.header-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: space-between; /* Ensures text is on the left and buttons on the right */
+    align-items: center; /* Aligns items vertically in the center */
+}
+
+.header-buttons h1 {
+    font-size: 20px;
+}
+
+.balance-col h2 {
+    padding-top: 50px;
+    font-size: 20px;
+    color: #000;
+}
+
+.header-buttons button {
+    background-color: #6e6ec8;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.header-buttons button:hover {
+    background-color: #5a5aac00;
+    color: #6e6ec8;
+    border: 1px solid #6e6ec8;
+}
+
+/* Balance Overview */
+.balance-overview {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.vault {
+    background-color: whitesmoke;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    flex: 1;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.vault:hover {
+    transform: translateY(-5px);
+    border: 1px solid #6E6EC8;
+}
+
+/* Vault Details */
+.vault-details {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+} 
+
+.vault-details {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    position: relative; /* Ensure positioning for pseudo-element */
+    overflow: hidden; /* Prevent the watermark from overflowing */
+}
+
+.vault-details::before {
+    content: "NIGERIAN  ARMY FINANCE CORP"; /* Your watermark text */
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px; /* Adjust size as needed */
+    color: rgba(197, 3, 3, 0.329); /* Light gray and transparent */
+    white-space: nowrap;
+    pointer-events: none; /* Ensure it's not interactive */
+    z-index: 0; /* Keeps it in the background */
+} 
+
+/* .watermark {
+    opacity: 0.2;
+    color: BLACK;
+    position: fixed;
+    top: auto;
+    left: 50%;
+}
+
+.watermark {
+    opacity: 0.2;
+    color: BLACK;
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    background-position: fixed;
+} */
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tabs button {
+    background-color: #f5f5f7;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #333;
+}
+
+.tabs button.active,
+.tabs button:hover {
+    background-color: #6e6ec8;
+    color: #fff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table thead th {
+    background-color: rgba(192, 191, 191, 0.598);
+    padding: 10px;
+    text-align: left;
+    color: #000;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #6e6ec857;
+    color: #000;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #e6e6f000;
+}
+
+table tbody tr td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    /* .watermark {
+        opacity: 0.2;
+        color: BLACK;
+        position: fixed;
+        top: 1720px;
+        left: 40%;
+    }
+    
+    .watermark {
+        opacity: 0.2;
+        color: BLACK;
+        position: absolute;
+        bottom: 0;
+        right: 50%;
+    }
+    
+    .balance-overview {
+        flex-direction: column;
+    }
+
+    .top-right-header, .tabs, .header-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-buttons button,
+    .login-btn,
+    .signup-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    table thead th {
+        background-color: rgba(192, 191, 191, 0.598);
+        padding: 10px;
+        text-align: left;
+        color: #000;
+    }
+
+    table tbody tr:nth-child(even) {
+        background-color: #6e6ec857;
+        color: #000;
+    }
+    
+    table tbody tr:nth-child(odd) {
+        background-color: #e6e6f0;
+    } */
+}
